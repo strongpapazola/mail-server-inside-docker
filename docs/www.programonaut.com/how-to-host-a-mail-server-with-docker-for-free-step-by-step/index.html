@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Aug 2023 06:36:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel='dns-prefetch' href='http://programonaut.b-cdn.net/' /><meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v21.0 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>How To Host A Mail Server With Docker For Free (Step-by-Step)</title>
+	<meta name="description" content="Learn how to host a mail server for free in a few simple steps using Docker and then test it with Pocketbase." />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="How To Host A Mail Server With Docker For Free (Step-by-Step)" />
+	<meta property="og:description" content="Learn how to host a mail server for free in a few simple steps using Docker and then test it with Pocketbase." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Programonaut - Maximilian Kürschner" />
+	<meta property="article:published_time" content="2023-02-12T16:00:00+00:00" />
+	<meta property="article:modified_time" content="2023-02-11T18:11:19+00:00" />
+	<meta property="og:image" content="https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-thumbnail.png" />
+	<meta property="og:image:width" content="1280" />
+	<meta property="og:image:height" content="720" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Programonaut" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="How To Host A Mail Server With Docker For Free (Step-by-Step)" />
+	<meta name="twitter:description" content="Learn how to host a mail server for free in a few simple steps using Docker and then test it with Pocketbase." />
+	<meta name="twitter:image" content="https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-thumbnail.png" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Programonaut" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="5 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/#article","isPartOf":{"@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/"},"author":{"name":"Programonaut","@id":"https://www.programonaut.com/#/schema/person/f042a9247be83a49f7ab75aeb030758a"},"headline":"How To Host A Mail Server With Docker For Free (Step-by-Step)","datePublished":"2023-02-12T16:00:00+00:00","dateModified":"2023-02-11T18:11:19+00:00","mainEntityOfPage":{"@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/"},"wordCount":728,"commentCount":2,"publisher":{"@id":"https://www.programonaut.com/#/schema/person/f042a9247be83a49f7ab75aeb030758a"},"image":{"@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/#primaryimage"},"thumbnailUrl":"https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-thumbnail.png","keywords":["SMTP","Docker","Pocketbase"],"articleSection":["Docker"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/#respond"]}]},{"@type":"WebPage","@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/","url":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/","name":"How To Host A Mail Server With Docker For Free (Step-by-Step)","isPartOf":{"@id":"https://www.programonaut.com/#website"},"primaryImageOfPage":{"@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/#primaryimage"},"image":{"@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/#primaryimage"},"thumbnailUrl":"https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-thumbnail.png","datePublished":"2023-02-12T16:00:00+00:00","dateModified":"2023-02-11T18:11:19+00:00","description":"Learn how to host a mail server for free in a few simple steps using Docker and then test it with Pocketbase.","breadcrumb":{"@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/#primaryimage","url":"https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-thumbnail.png","contentUrl":"https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-thumbnail.png","width":1280,"height":720,"caption":"host mail server for free using docker: thumbnail"},{"@type":"BreadcrumbList","@id":"https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.programonaut.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.programonaut.com/blog/"},{"@type":"ListItem","position":3,"name":"How To Host A Mail Server With Docker For Free (Step-by-Step)"}]},{"@type":"WebSite","@id":"https://www.programonaut.com/#website","url":"https://www.programonaut.com/","name":"Programonaut - Maximilian Kürschner","description":"","publisher":{"@id":"https://www.programonaut.com/#/schema/person/f042a9247be83a49f7ab75aeb030758a"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.programonaut.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":["Person","Organization"],"@id":"https://www.programonaut.com/#/schema/person/f042a9247be83a49f7ab75aeb030758a","name":"Programonaut","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.programonaut.com/#/schema/person/image/","url":"https://programonaut.b-cdn.net/wp-content/uploads/2021/07/programonaut-sw-512.png","contentUrl":"https://programonaut.b-cdn.net/wp-content/uploads/2021/07/programonaut-sw-512.png","width":512,"height":512,"caption":"Programonaut"},"logo":{"@id":"https://www.programonaut.com/#/schema/person/image/"},"sameAs":["https://www.programonaut.com","https://www.linkedin.com/in/maximilian-kuerschner/"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='http://static.addtoany.com/' />
+<link rel="alternate" type="application/rss+xml" title="Programonaut - Maximilian Kürschner &raquo; How To Host A Mail Server With Docker For Free (Step-by-Step) Comments Feed" href="feed/index.html" />
+<script type='text/javascript' defer='defer' src='https://programonaut.b-cdn.net/wp-content/dc6843b545cc8bfe3af24e72d9ea055e.js?ver=b0759e6f78c1d393b42cbf57d4842856' ></script>
+<script type="application/json" data-skip-moving="true" data-no-defer nitro-exclude data-alt-type="application/ld+json" id="a685f7977f68a8e9480c9f12f7410cfce1-js-extra">{"slug":"real-cookie-banner-pro","textDomain":"real-cookie-banner","version":"3.11.0","restUrl":"https:\/\/www.programonaut.com\/wp-json\/real-cookie-banner\/v1\/","restNamespace":"real-cookie-banner\/v1","restPathObfuscateOffset":"455ed50d593f3a08f258d9056479ba52","restRoot":"https:\/\/www.programonaut.com\/wp-json\/","restQuery":{"_v":"3.11.0","_locale":"user"},"restNonce":"c4b9a7ed49","restRecreateNonceEndpoint":"https:\/\/www.programonaut.com\/wp-admin\/admin-ajax.php?action=rest-nonce","publicUrl":"https:\/\/www.programonaut.com\/wp-content\/plugins\/real-cookie-banner-pro\/public\/","chunkFolder":"dist","chunksLanguageFolder":"https:\/\/www.programonaut.com\/wp-content\/plugins\/real-cookie-banner-pro\/languages","chunks":{},"others":{"customizeValuesBanner":{"layout":{"type":"dialog","dialogMaxWidth":530,"dialogPosition":"middleCenter","dialogMargin":[0,0,0,0],"bannerPosition":"bottom","bannerMaxWidth":1024,"dialogBorderRadius":1,"borderRadius":2,"animationIn":"none","animationInDuration":1000,"animationInOnlyMobile":false,"animationOut":"none","animationOutDuration":500,"animationOutOnlyMobile":false,"overlay":true,"overlayBg":"#000000","overlayBgAlpha":38,"overlayBlur":2},"decision":{"acceptAll":"button","acceptEssentials":"button","showCloseIcon":false,"acceptIndividual":"link","buttonOrder":"all,essential,save,individual","showGroups":false,"groupsFirstView":false,"saveButton":"always"},"legal":{"privacyPolicy":5547,"privacyPolicyExternalUrl":"","privacyPolicyIsExternalUrl":false,"privacyPolicyLabel":"Privacy policy","privacyPolicyHide":true,"imprint":4811,"imprintExternalUrl":"","imprintIsExternalUrl":false,"imprintLabel":"Imprint","imprintHide":true},"design":{"bg":"#ffffff","textAlign":"center","linkTextDecoration":"underline","borderWidth":0,"borderColor":"#ffffff","fontSize":13,"fontColor":"#2b2b2b","fontInheritFamily":true,"fontFamily":"Arial, Helvetica, sans-serif","fontWeight":"normal","boxShadowEnabled":true,"boxShadowOffsetX":0,"boxShadowOffsetY":5,"boxShadowBlurRadius":13,"boxShadowSpreadRadius":0,"boxShadowColor":"#000000","boxShadowColorAlpha":20},"headerDesign":{"inheritBg":true,"bg":"#f4f4f4","inheritTextAlign":true,"textAlign":"center","padding":[17,20,15,20],"logo":"https:\/\/www.programonaut.com\/wp-content\/uploads\/2021\/07\/programonaut-ws-512.png","logoRetina":"","logoMaxHeight":40,"logoPosition":"above","logoMargin":[5,15,5,15],"fontSize":20,"fontColor":"#2b2b2b","fontInheritFamily":true,"fontFamily":"Arial, Helvetica, sans-serif","fontWeight":"normal","borderWidth":1,"borderColor":"#efefef","logoFitDim":[40,40]},"bodyDesign":{"padding":[15,20,10,20],"descriptionInheritFontSize":true,"descriptionFontSize":13,"dottedGroupsInheritFontSize":true,"dottedGroupsFontSize":13,"dottedGroupsBulletColor":"#2b6def","teachingsInheritTextAlign":true,"teachingsTextAlign":"center","teachingsSeparatorActive":true,"teachingsSeparatorWidth":50,"teachingsSeparatorHeight":1,"teachingsSeparatorColor":"#2b6def","teachingsInheritFontSize":false,"teachingsFontSize":12,"teachingsInheritFontColor":false,"teachingsFontColor":"#7c7c7c","tcfStacksMargin":[10,0,5,0],"tcfStacksPadding":[5,10,5,10],"tcfStacksArrowType":"outlined","tcfStacksArrowColor":"#15779b","tcfStacksBg":"#ffffff","tcfStacksActiveBg":"#f9f9f9","tcfStacksHoverBg":"#efefef","tcfStacksBorderWidth":1,"tcfStacksBorderColor":"#efefef","tcfStacksTitleFontSize":12,"tcfStacksTitleFontColor":"#2b2b2b","tcfStacksTitleFontWeight":"normal","tcfStacksDescriptionMargin":[5,0,0,0],"tcfStacksDescriptionFontSize":12,"tcfStacksDescriptionFontColor":"#828282","tcfStacksDescriptionFontWeight":"normal","acceptAllOneRowLayout":false,"acceptAllPadding":[10,10,10,10],"acceptAllBg":"#1f64ef","acceptAllTextAlign":"center","acceptAllFontSize":18,"acceptAllFontColor":"#ffffff","acceptAllFontWeight":"normal","acceptAllBorderWidth":0,"acceptAllBorderColor":"#000000","acceptAllHoverBg":"#1f64ef","acceptAllHoverFontColor":"#ffffff","acceptAllHoverBorderColor":"#000000","acceptEssentialsUseAcceptAll":true,"acceptEssentialsButtonType":"","acceptEssentialsPadding":[10,10,10,10],"acceptEssentialsBg":"#efefef","acceptEssentialsTextAlign":"center","acceptEssentialsFontSize":16,"acceptEssentialsFontColor":"#0a0a0a","acceptEssentialsFontWeight":"normal","acceptEssentialsBorderWidth":0,"acceptEssentialsBorderColor":"#000000","acceptEssentialsHoverBg":"#e8e8e8","acceptEssentialsHoverFontColor":"#000000","acceptEssentialsHoverBorderColor":"#000000","acceptIndividualPadding":[0,5,0,5],"acceptIndividualBg":"#ffffff","acceptIndividualTextAlign":"center","acceptIndividualFontSize":15,"acceptIndividualFontColor":"#1f64ef","acceptIndividualFontWeight":"normal","acceptIndividualBorderWidth":0,"acceptIndividualBorderColor":"#000000","acceptIndividualHoverBg":"#ffffff","acceptIndividualHoverFontColor":"#1f64ef","acceptIndividualHoverBorderColor":"#000000"},"footerDesign":{"poweredByLink":false,"inheritBg":false,"bg":"#fcfcfc","inheritTextAlign":true,"textAlign":"center","linkTarget":"_blank","padding":[10,20,15,20],"fontSize":14,"fontColor":"#7c7c7c","fontInheritFamily":true,"fontFamily":"Arial, Helvetica, sans-serif","fontWeight":"normal","hoverFontColor":"#2b2b2b","borderWidth":1,"borderColor":"#efefef"},"texts":{"headline":"Privacy preferences","description":"We use cookies and similar technologies on our website and process your personal data (e.g. IP address), for example, to personalize content and ads, to integrate media from third-party providers or to analyze traffic on our website. Data processing may also happen as a result of cookies being set. We share this data with third parties that we name in the privacy settings.<br \/><br \/>The data processing may take place with your consent or on the basis of a legitimate interest, which you can object to in the privacy settings. You have the right not to consent and to change or revoke your consent at a later time. For more information on the use of your data, please visit our {{privacyPolicy}}privacy policy{{\/privacyPolicy}}.","acceptAll":"Accept all","acceptEssentials":"Continue without consent","acceptIndividual":"Set privacy settings individually","poweredBy":"2","dataProcessingInUnsafeCountries":"Some services process personal data in unsecure third countries. By consenting to the use of these services, you also consent to the processing of your data in these unsecure third countries in accordance with Art. 49 (1) lit. a GDPR. This involves risks that your data will be processed by authorities for control and monitoring purposes, perhaps without the possibility of a legal recourse.","ageNoticeBanner":"You are under 16 years old? Then you cannot consent to optional services. Ask your parents or legal guardians to agree to these services with you.","ageNoticeBlocker":"You are under 16 years old? Unfortunately, you are not permitted to consent to this service to view this content. Please ask your parents or guardians to agree to the service with you!","listServicesNotice":"By accepting all services, you allow {{services}} to be loaded. These services are divided into groups {{serviceGroups}} according to their purpose (belonging marked with superscript numbers).","listServicesLegitimateInterestNotice":"In addition, {{services}} are loaded based on a legitimate interest.","tcfStacksCustomName":"Services with various purposes outside the TCF standard","tcfStacksCustomDescription":"Services that do not share consents via the TCF standard, but via other technologies. These are divided into several groups according to their purpose. Some of them are used based on a legitimate interest (e.g. threat prevention), others are used only with your consent. Details about the individual groups and purposes of the services can be found in the individual privacy settings.","consentForwardingExternalHosts":"Your consent is also applicable on {{websites}}.","blockerHeadline":"{{name}} blocked due to privacy settings","blockerLinkShowMissing":"Show all services you still need to agree to","blockerLoadButton":"Accept required services and load content","blockerAcceptInfo":"Loading the blocked content will adjust your privacy settings. Content from this service will not be blocked in the future. You have the right to revoke or change your decision at any time."},"individualLayout":{"inheritDialogMaxWidth":false,"dialogMaxWidth":970,"inheritBannerMaxWidth":true,"bannerMaxWidth":1980,"descriptionTextAlign":"left"},"group":{"checkboxBg":"#f0f0f0","checkboxBorderWidth":1,"checkboxBorderColor":"#d2d2d2","checkboxActiveColor":"#ffffff","checkboxActiveBg":"#15779b","checkboxActiveBorderColor":"#11607d","groupInheritBg":true,"groupBg":"#f4f4f4","groupPadding":[15,15,15,15],"groupSpacing":10,"groupBorderRadius":5,"groupBorderWidth":1,"groupBorderColor":"#f4f4f4","headlineFontSize":16,"headlineFontWeight":"normal","headlineFontColor":"#2b2b2b","descriptionFontSize":14,"descriptionFontColor":"#7c7c7c","linkColor":"#7c7c7c","linkHoverColor":"#2b2b2b"},"saveButton":{"useAcceptAll":true,"type":"button","padding":[10,10,10,10],"bg":"#efefef","textAlign":"center","fontSize":16,"fontColor":"#0a0a0a","fontWeight":"normal","borderWidth":0,"borderColor":"#000000","hoverBg":"#e8e8e8","hoverFontColor":"#000000","hoverBorderColor":"#000000"},"individualTexts":{"headline":"Individual privacy preferences","description":"We use cookies and similar technologies on our website and process your personal data (e.g. IP address), for example, to personalize content and ads, to integrate media from third-party providers or to analyze traffic on our website. Data processing may also happen as a result of cookies being set. We share this data with third parties that we name in the privacy settings.<br \/><br \/>The data processing may take place with your consent or on the basis of a legitimate interest, which you can object to in the privacy settings. You have the right not to consent and to change or revoke your consent at a later time. For more information on the use of your data, please visit our {{privacyPolicy}}privacy policy{{\/privacyPolicy}}.<br \/><br \/>Below you will find an overview of all services used by this website. You can view detailed information about each service and agree to them individually or exercise your right to object.","save":"Save custom choices","showMore":"Show service information","hideMore":"Hide service information","postamble":""},"mobile":{"enabled":true,"maxHeight":400,"hideHeader":false,"alignment":"bottom","scalePercent":90,"scalePercentVertical":-50},"customCss":{"css":"","antiAdBlocker":"y"}},"isPro":true,"showProHints":false,"proUrl":"https:\/\/devowl.io\/go\/real-cookie-banner?source=rcb-lite","showLiteNotice":false,"hasDynamicPreDecisions":true,"isLicensed":true,"isDevLicense":false,"multilingualSkipHTMLForTag":"","isCurrentlyInTranslationEditorPreview":false,"defaultLanguage":"","currentLanguage":"","activeLanguages":[],"context":"","userConsentCookieName":"real_cookie_banner-v:3_blog:1_path:a549416","revisionHash":"0f16641189f476d8c05f6a898d269046","iso3166OneAlpha2":{"AF":"Afghanistan","AX":"Aland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua And Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BA":"Bosnia And Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","BN":"Brunei Darussalam","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","KH":"Cambodia","CM":"Cameroon","CA":"Canada","CV":"Cape Verde","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo, Democratic Republic","CK":"Cook Islands","CR":"Costa Rica","CI":"Cote D'Ivoire","HR":"Croatia","CU":"Cuba","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands (Malvinas)","FO":"Faroe Islands","FM":"Federated States Of Micronesia","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern and Antarctic Lands","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island & Mcdonald Islands","VA":"Holy See (Vatican City State)","HN":"Honduras","HK":"Hong Kong","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran, Islamic Republic Of","IQ":"Iraq","IE":"Ireland","IM":"Isle Of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Lao People's Democratic Republic","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libyan Arab Jamahiriya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao","MK":"Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","AN":"Netherlands Antilles","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Territory, Occupied","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Reunion","RO":"Romania","RU":"Russian Federation","RW":"Rwanda","BL":"Saint Barth\u00e9lemy","SH":"Saint Helena","KN":"Saint Kitts And Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre And Miquelon","VC":"Saint Vincent And Grenadines","WS":"Samoa","SM":"San Marino","ST":"Sao Tome And Principe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia And Sandwich Isl.","ES":"Spain","LK":"Sri Lanka","SD":"Sudan","SR":"Suriname","SJ":"Svalbard And Jan Mayen","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syrian Arab Republic","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad And Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks And Caicos Islands","TV":"Tuvalu","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UM":"United States Outlying Islands","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VE":"Venezuela","VN":"Vietnam","VG":"Virgin Islands, British","VI":"Virgin Islands, U.S.","WF":"Wallis And Futuna","EH":"Western Sahara","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"},"isTcf":false,"isPreventPreDecision":false,"isAcceptAllForBots":true,"isRespectDoNotTrack":false,"isDataProcessingInUnsafeCountries":false,"dataProcessingInUnsafeCountriesSafeCountries":["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IS","IT","LI","LV","LT","LU","MT","NL","NO","PL","PT","RO","SK","SI","ES","SE","AD","AR","CA","FO","GG","IL","IM","JP","JE","NZ","KR","CH","GB","UY","US"],"isAgeNotice":true,"isListServicesNotice":true,"setCookiesViaManager":"none","essentialGroup":"essential","groups":[{"id":44,"name":"Essential","slug":"essential","description":"Essential services are required for the basic functionality of the website. They only contain technically necessary services. These services cannot be objected to.","items":[{"id":4813,"name":"Real Cookie Banner","purpose":"Real Cookie Banner asks website visitors for consent to set cookies and process personal data. For this purpose, a UUID (pseudonymous identification of the user) is assigned to each website visitor, which is valid until the cookie expires to store the consent. Cookies are used to test whether cookies can be set, to store reference to documented consent, to store which services from which service groups the visitor has consented to, and, if consent is obtained under the Transparency &amp; Consent Framework (TCF), to store consent in TCF partners, purposes, special purposes, features and special features. As part of the obligation to disclose according to GDPR, the collected consent is fully documented. This includes, in addition to the services and service groups to which the visitor has consented, and if consent is obtained according to the TCF standard, to which TCF partners, purposes and features the visitor has consented, all cookie banner settings at the time of consent as well as the technical circumstances (e.g. size of the displayed area at the time of consent) and the user interactions (e.g. clicking on buttons) that led to consent. Consent is collected once per language.","provider":"Programonaut - Maximilian K\u00fcrschner","uniqueName":"real-cookie-banner","isEmbeddingOnlyExternalResources":false,"legalBasis":"legal-requirement","dataProcessingInCountries":[],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"type":"http","name":"real_cookie_banner*","host":".programonaut.com","duration":365,"durationUnit":"d","isSessionDuration":false},{"type":"http","name":"real_cookie_banner*-tcf","host":".programonaut.com","duration":365,"durationUnit":"d","isSessionDuration":false},{"type":"http","name":"real_cookie_banner-test","host":".programonaut.com","duration":365,"durationUnit":"d","isSessionDuration":false}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/www.programonaut.com\/privacy-policy-termly\/","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":false,"codeOnPageLoad":"","presetId":"real-cookie-banner"}]},{"id":45,"name":"Functional","slug":"functional","description":"Functional services are necessary to provide features beyond the essential functionality such as prettier fonts, video playback or interactive Web 2.0 features. Content from e.g. video platforms and social media platforms are blocked by default, and can be consented to. If the service is agreed to, this content is loaded automatically without further manual consent.","items":[{"id":5955,"name":"YouTube","purpose":"YouTube allows embedding content posted on youtube.com directly into websites. The cookies are used to collect visited websites and detailed statistics about the user behaviour. This data can be linked to the data of users registered on youtube.com and google.com or localized versions of these services.","provider":"Google Ireland Limited","uniqueName":"youtube","isEmbeddingOnlyExternalResources":false,"legalBasis":"consent","dataProcessingInCountries":["US"],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"type":"http","name":"SIDCC","host":".youtube.com","durationUnit":"y","isSessionDuration":false,"duration":1},{"type":"http","name":"__Secure-3PAPISID","host":".youtube.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"__Secure-APISID","host":".youtube.com","duration":1,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"SAPISID","host":".youtube.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"SSID","host":".youtube.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"1P_JAR","host":".youtube.com","duration":1,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"SEARCH_SAMESITE","host":".youtube.com","duration":6,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"YSC","host":".youtube.com","durationUnit":"y","isSessionDuration":true,"duration":0},{"type":"http","name":"LOGIN_INFO","host":".youtube.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"HSID","host":".youtube.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"VISITOR_INFO1_LIVE","host":".youtube.com","duration":6,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"CONSENT","host":".youtube.com","duration":18,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"__Secure-SSID","host":".youtube.com","duration":1,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"__Secure-HSID","host":".youtube.com","duration":1,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"APISID","host":".youtube.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"__Secure-3PSID","host":".youtube.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"PREF","host":".youtube.com","duration":8,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"SID","host":".youtube.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"s_gl","host":".youtube.com","durationUnit":"y","isSessionDuration":true,"duration":0},{"type":"http","name":"SIDCC","host":".google.com","duration":1,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"__Secure-3PAPISID","host":".google.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"SAPISID","host":".google.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"APISID","host":".google.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"SSID","host":".google.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"HSID","host":".google.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"__Secure-3PSID","host":".google.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"SID","host":".google.com","duration":2,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"CONSENT","host":".google.com","duration":18,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"NID","host":".google.com","duration":6,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"1P_JAR","host":".google.com","duration":1,"durationUnit":"mo","isSessionDuration":false},{"type":"http","name":"DV","host":"www.google.com","duration":1,"durationUnit":"m","isSessionDuration":false}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/policies.google.com\/privacy","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":false,"codeOnPageLoad":"","presetId":"youtube"},{"id":5591,"name":"Gravatar (Avatar images)","purpose":"Gravatar is a service where people can associate their email address with an avatar image that is for example loaded in the comment area. No cookies in the technical sense are set on the client of the user, but technical and personal data such as the IP address will be transmitted from the client to the server of the service provider to make the use of the service possible.","provider":"Automattic Inc.","uniqueName":"gravatar-avatar-images","isEmbeddingOnlyExternalResources":true,"legalBasis":"consent","dataProcessingInCountries":["US"],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"type":"http","name":"","host":"","durationUnit":"y","isSessionDuration":false,"purpose":"","duration":0}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/automattic.com\/privacy\/","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":false,"codeOnPageLoad":"","presetId":"gravatar-avatar-images"},{"id":4815,"name":"Emojis","purpose":"WordPress Emoji is an emoji set that is loaded from wordpress.org. No cookies in the technical sense are set on the client of the user, but technical and personal data such as the IP address will be transmitted from the client to the server of the service provider to make the use of the service possible.","provider":"WordPress.org","uniqueName":"wordpress-emojis","isEmbeddingOnlyExternalResources":true,"legalBasis":"consent","dataProcessingInCountries":["US"],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"type":"http","name":"","host":"","durationUnit":"y","isSessionDuration":false,"duration":0}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/wordpress.org\/about\/privacy\/","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":false,"codeOnPageLoad":"","presetId":"wordpress-emojis"},{"id":4814,"name":"Comments","purpose":"WordPress as a content management system offers the possibility to write comments under blog posts and similar content. The cookie stores the name, e-mail address and website of a commentator to display it again if the commentator wants to write another comment on this website.","provider":"Programonaut - Maximilian K\u00fcrschner","uniqueName":"wordpress-comments","isEmbeddingOnlyExternalResources":false,"legalBasis":"consent","dataProcessingInCountries":[],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"type":"http","name":"comment_author_*","host":"programonaut.com","duration":1,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"comment_author_email_*","host":"programonaut.com","duration":1,"durationUnit":"y","isSessionDuration":false},{"type":"http","name":"comment_author_url_*","host":"programonaut.com","duration":1,"durationUnit":"y","isSessionDuration":false}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/www.programonaut.com\/?page_id=3","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"base64-encoded:PHNjcmlwdD4KICAgIHZhciBjaGVja2JveElkID0gIndwLWNvbW1lbnQtY29va2llcy1jb25zZW50IjsKICAgIHZhciBjaGVja2JveCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ1tuYW1lPSInICsgY2hlY2tib3hJZCArICciXScpOwogICAgdmFyIGxhYmVsID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcignW2Zvcj0iJyArIGNoZWNrYm94SWQgKyAnIl0nKSB8fCAoY2hlY2tib3ggJiYgY2hlY2tib3gucGFyZW50RWxlbWVudCk7CgogICAgaWYgKGxhYmVsICYmIGNoZWNrYm94KSB7CiAgICAgICAgY2hlY2tib3guY2hlY2tlZCA9IHRydWU7CiAgICAgICAgY2hlY2tib3guc3R5bGUuZGlzcGxheSA9ICJub25lIjsKICAgICAgICBsYWJlbC5zdHlsZS5kaXNwbGF5ID0gIm5vbmUiOwogICAgfQo8L3NjcmlwdD4=","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":false,"codeOnPageLoad":"","presetId":"wordpress-comments"}]},{"id":47,"name":"Marketing","slug":"marketing","description":"Marketing services are used by us and third parties to track the behaviour of individual visitors (across multiple pages), analyse the data collected and, for example, display personalized advertisements. These services enable us to track visitors across multiple websites.","items":[{"id":6183,"name":"AddToAny","purpose":"AddToAny allows providing links and buttons for sharing content on a variety of social networks and other communication tools on the internet. The cookies are used to uniquely identify the user and classify him or her as a potential attacker and to determine the fastest available server.","provider":"AddToAny","uniqueName":"add-to-any","isEmbeddingOnlyExternalResources":false,"legalBasis":"consent","dataProcessingInCountries":["US"],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"language":"en","id":543,"type":"http","name":"__cfduid","host":".addtoany.com","duration":13,"durationUnit":"mo","isSessionDuration":false,"orderPosition":0}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/www.addtoany.com\/privacy","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":false,"codeOnPageLoad":"","presetId":"add-to-any"},{"id":6019,"name":"Carbon Ads","purpose":"","provider":"buysellads.com","uniqueName":"carbon-ads","isEmbeddingOnlyExternalResources":true,"legalBasis":"consent","dataProcessingInCountries":[],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"type":"http","name":"","host":"","durationUnit":"y","isSessionDuration":false,"purpose":"","duration":0}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/www.buysellads.com\/privacy","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":false,"codeOnPageLoad":"","presetId":""},{"id":5253,"name":"tawk.to (Chat)","purpose":"tawk.to is a customer service tool that provides live chat for websites. The cookies are used to identify the user, associate previous messages with their chat history and collect detailed statistics on his\/her behavior.","provider":"tawk.to Inc.","uniqueName":"tawk-to-chat","isEmbeddingOnlyExternalResources":true,"legalBasis":"consent","dataProcessingInCountries":["US"],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"type":"http","name":"__tawkuuid","host":".www.programonaut.com","durationUnit":"mo","isSessionDuration":false,"duration":6},{"type":"http","name":"TawkConnectionTime","host":"www.programonaut.com","durationUnit":"y","isSessionDuration":true,"duration":0},{"type":"local","name":"twk_*","host":"www.programonaut.com","durationUnit":"y","isSessionDuration":false,"duration":0}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/www.tawk.to\/privacy-policy\/","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":false,"codeOnPageLoad":"","presetId":"tawk-to-chat"},{"id":4822,"name":"ConvertKit","purpose":"ConvertKit is a marketing platform that allows us to differentiate audiences and send marketing messages via email. The service also plays contextual prompts to subscribe to newsletters. Cookies are used to assign a unique ID to each visitor to uniquely identify them across multiple subpages, to remember which newsletter subscription prompts have already been displayed, and to prevent attacks against the infrastructure of the service.","provider":"ConvertKit LLC","uniqueName":"convertkit","isEmbeddingOnlyExternalResources":false,"legalBasis":"consent","dataProcessingInCountries":["US"],"dataProcessingInCountriesSpecialTreatments":[],"technicalDefinitions":[{"type":"http","name":"__cf_bm","host":".convertkit.com","durationUnit":"m","isSessionDuration":false,"duration":30},{"type":"local","name":"ckid","host":"www.programonaut.com","durationUnit":"y","isSessionDuration":false,"duration":0},{"type":"local","name":"ck\/forms\/modal\/*\/hideUntil","host":"www.programonaut.com","durationUnit":"y","isSessionDuration":false,"duration":0}],"codeDynamics":[],"providerPrivacyPolicyUrl":"https:\/\/convertkit.com\/privacy","providerLegalNoticeUrl":"","tagManagerOptInEventName":"","tagManagerOptOutEventName":"","codeOptIn":"","executeCodeOptInWhenNoTagManagerConsentIsGiven":false,"codeOptOut":"","executeCodeOptOutWhenNoTagManagerConsentIsGiven":false,"deleteTechnicalDefinitionsAfterOptOut":true,"codeOnPageLoad":"","presetId":"convertkit"}]}],"blocker":[{"id":6020,"name":"Carbon Ads","description":"","rules":["*cdn.carbonads.com*"],"criteria":"services","tcfVendors":[],"services":[6019],"isVisual":false,"visualType":"default","visualMediaThumbnail":"0","visualContentType":"","isVisualDarkMode":false,"visualBlur":0,"visualDownloadThumbnail":false,"visualHeroButtonText":"","shouldForceToShowVisual":false,"presetId":""},{"id":5956,"name":"YouTube","description":"","rules":["*youtube.com*","*youtu.be*","*youtube-nocookie.com*","*ytimg.com*","*apis.google.com\/js\/platform.js*","div[class*=\"g-ytsubscribe\"]","*youtube.com\/subscribe_embed*","div[data-settings:matchesUrl()]","script[id=\"uael-video-subscribe-js\"]","div[class*=\"elementor-widget-premium-addon-video-box\"][data-settings*=\"youtube\"]","div[class*=\"td_wrapper_playlist_player_youtube\"]","*wp-content\/plugins\/wp-youtube-lyte\/lyte\/lyte-min.js*","*wp-content\/plugins\/youtube-embed-plus\/scripts\/*","*wp-content\/plugins\/youtube-embed-plus-pro\/scripts\/*","div[id^=\"epyt_gallery\"]","div[class*=\"tcb-yt-bg\"]","a[href*=\"youtube.com\"][rel=\"wp-video-lightbox\"]","lite-youtube[videoid]","a[href*=\"youtube.com\"][class*=\"awb-lightbox\"]","div[data-elementor-lightbox*=\"youtube.com\"]","div[class*=\"w-video\"][onclick*=\"youtube.com\"]","new OUVideo({*type:*yt","*\/wp-content\/plugins\/streamtube-core\/public\/assets\/vendor\/video.js\/youtube*","video-js[data-setup:matchesUrl()][data-player-id]","a[data-youtube:delegateClick()]"],"criteria":"services","tcfVendors":[],"services":[5955],"isVisual":true,"visualType":"hero","visualMediaThumbnail":"0","visualContentType":"video-player","isVisualDarkMode":false,"visualBlur":0,"visualDownloadThumbnail":true,"visualHeroButtonText":"","shouldForceToShowVisual":false,"presetId":"youtube","visualThumbnail":{"url":"https:\/\/www.programonaut.com\/wp-content\/plugins\/real-cookie-banner-pro\/public\/images\/visual-content-blocker\/video-player-light.svg","width":580,"height":326,"hide":["overlay"],"titleType":"center"}},{"id":5592,"name":"Gravatar","description":"","rules":["*gravatar.com\/avatar*","*.gravatar.com"],"criteria":"services","tcfVendors":[],"services":[5591],"isVisual":false,"visualType":"default","visualMediaThumbnail":"0","visualContentType":"","isVisualDarkMode":false,"visualBlur":0,"visualDownloadThumbnail":false,"visualHeroButtonText":"","shouldForceToShowVisual":false,"presetId":"gravatar-avatar-images"},{"id":5254,"name":"tawk.to (Chat)","description":"","rules":["*embed.tawk.to*","Tawk_API"],"criteria":"services","tcfVendors":[],"services":[5253],"isVisual":false,"visualType":"default","visualMediaThumbnail":0,"visualContentType":"","isVisualDarkMode":false,"visualBlur":0,"visualDownloadThumbnail":false,"visualHeroButtonText":"","shouldForceToShowVisual":false,"presetId":"tawk-to-chat"},{"id":4823,"name":"ConvertKit","description":"The email newsletter subscription form is blocked because you have not allowed our email marketing provider ConvertKit to load.","rules":["*\/wp-content\/plugins\/convertkit*","*ck.page*","script[id=\"convertkit-js-js-extra\"]","script[id=\"convertkit-js-js\"]"],"criteria":"services","tcfVendors":[],"services":[4822],"isVisual":true,"visualType":"default","visualMediaThumbnail":0,"visualContentType":"","isVisualDarkMode":false,"visualBlur":0,"visualDownloadThumbnail":false,"visualHeroButtonText":"","shouldForceToShowVisual":false,"presetId":"convertkit"},{"id":4816,"name":"WordPress Emojis","description":"","rules":["*s.w.org\/images\/core\/emoji*","window._wpemojiSettings","link[href=\"\/\/s.w.org\"]"],"criteria":"services","tcfVendors":[],"services":[4815],"isVisual":true,"visualType":"default","visualMediaThumbnail":0,"visualContentType":"","isVisualDarkMode":false,"visualBlur":0,"visualDownloadThumbnail":false,"visualHeroButtonText":"","shouldForceToShowVisual":false,"presetId":"wordpress-emojis"}],"setVisualParentIfClassOfParent":{"et_pb_video_box":1,"ast-oembed-container":1,"wpb_video_wrapper":1},"dependantVisibilityContainers":["[role=\"tabpanel\"]",".eael-tab-content-item",".wpcs_content_inner",".op3-contenttoggleitem-content",".pum-overlay","[data-elementor-type=\"popup\"]",".wp-block-ub-content-toggle-accordion-content-wrap",".w-popup-wrap",".oxy-lightbox_inner[data-inner-content=true]",".oxy-pro-accordion_body",".oxy-tab-content",".kt-accordion-panel",".vc_tta-panel-body",".mfp-hide"],"bannerDesignVersion":6,"bannerI18n":{"appropriateSafeguard":"Appropriate safeguard","standardContractualClauses":"Standard contractual clauses","legalBasis":"Use on legal basis of","legitimateInterest":"Legitimate interest","legalRequirement":"Compliance with a legal obligation","consent":"Consent","crawlerLinkAlert":"We have recognized that you are a crawler\/bot. Only natural persons must consent to cookies and processing of personal data. Therefore, the link has no function for you.","technicalCookieDefinition":"Technical cookie definition","usesCookies":"Uses cookies","cookieRefresh":"Cookie refresh","usesNonCookieAccess":"Uses cookie-like information (LocalStorage, SessionStorage, IndexDB, etc.)","host":"Host","duration":"Duration","noExpiration":"No expiration","type":"Type","purpose":"Purpose","headerTitlePrivacyPolicyHistory":"History of your privacy settings","skipToConsentChoices":"Skip to consent choices","historyLabel":"Show consent from","historySelectNone":"Not yet consented to","provider":"Provider","providerPrivacyPolicyUrl":"Privacy Policy","providerLegalNoticeUrl":"Legal notice","dataProcessingInUnsafeCountries":"Data processing in unsecure third countries","ePrivacyUSA":"US data processing","durationUnit":{"s":"second(s)","m":"minute(s)","h":"hour(s)","d":"day(s)","mo":"month(s)","y":"year(s)","n1":{"s":"second","m":"minute","h":"hour","d":"day","mo":"month","y":"year"},"nx":{"s":"seconds","m":"minutes","h":"hours","d":"days","mo":"months","y":"years"}},"close":"Close","closeWithoutSaving":"Close without saving","yes":"Yes","no":"No","unknown":"Unknown","none":"None","noLicense":"No license activated - not for production use!","devLicense":"Product license not for production use!","devLicenseLearnMore":"Learn more","devLicenseLink":"https:\/\/devowl.io\/knowledge-base\/license-installation-type\/","andSeparator":" and "},"pageRequestUuid4":"a65ab41d3-b2ac-4c9c-be6c-3eaa1ad83e3f","pageByIdUrl":"https:\/\/www.programonaut.com?page_id","pageIdToPermalink":{"4811":"https:\/\/www.programonaut.com\/imprint\/","5547":"https:\/\/www.programonaut.com\/privacy-policy\/"},"pageId":false,"pluginUrl":"https:\/\/devowl.io\/wordpress-real-cookie-banner\/","tcf":[],"tcfMetadata":[]}}</script>
+<script data-skip-moving="true" data-no-defer nitro-exclude data-alt-type="application/ld+json" id="a685f7977f68a8e9480c9f12f7410cfce2-js-extra">var realCookieBanner = /* document.write */ JSON.parse(document.getElementById("a685f7977f68a8e9480c9f12f7410cfce1-js-extra").innerHTML, function (a,b){return-1<["codeOptIn","codeOptOut","codeOnPageLoad"].indexOf(a)&&"string"==typeof b&&b.startsWith("base64-encoded:")?window.atob(b.substr(15)):b});</script><script id="real-cookie-banner-pro-banner-js-before" type="text/javascript">
+((a,b)=>{a[b]||(a[b]={unblockSync:()=>undefined},["consentSync"].forEach(c=>a[b][c]=()=>({cookie:null,consentGiven:!1,cookieOptIn:!0})),["consent","consentAll","unblock"].forEach(c=>a[b][c]=(...d)=>new Promise(e=>a.addEventListener(b,()=>{a[b][c](...d).then(e)},{once:!0}))))})(window,"consentApi");
+</script>
+<script type='text/javascript' src='https://programonaut.b-cdn.net/wp-content/2bde67f49ace35cc78d616de72557251.js?ver=0e9096ee01ced5edb5c1a9f7aeb6ac9d' ></script>
+<script consent-required="4815" consent-by="services" consent-id="4816" consent-original-type-_="application/javascript" type="application/consent" consent-inline="
+window._wpemojiSettings = {&quot;baseUrl&quot;:&quot;https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/&quot;,&quot;ext&quot;:&quot;.png&quot;,&quot;svgUrl&quot;:&quot;https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/&quot;,&quot;svgExt&quot;:&quot;.svg&quot;,&quot;source&quot;:{&quot;concatemoji&quot;:&quot;https:\/\/www.programonaut.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.3.1&quot;}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case&quot;flag&quot;:return n(e,&quot;\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f&quot;,&quot;\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f&quot;)?!1:!n(e,&quot;\ud83c\uddfa\ud83c\uddf3&quot;,&quot;\ud83c\uddfa\u200b\ud83c\uddf3&quot;)&amp;&amp;!n(e,&quot;\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f&quot;,&quot;\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f&quot;);case&quot;emoji&quot;:return!n(e,&quot;\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff&quot;,&quot;\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff&quot;)}return!1}function f(e,t,n){var r=&quot;undefined&quot;!=typeof WorkerGlobalScope&amp;&amp;self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement(&quot;canvas&quot;),a=r.getContext(&quot;2d&quot;,{willReadFrequently:!0}),o=(a.textBaseline=&quot;top&quot;,a.font=&quot;600 32px Arial&quot;,{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement(&quot;script&quot;);t.src=e,t.defer=!0,i.head.appendChild(t)}&quot;undefined&quot;!=typeof Promise&amp;&amp;(o=&quot;wpEmojiSettingsSupports&quot;,s=[&quot;flag&quot;,&quot;emoji&quot;],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener(&quot;DOMContentLoaded&quot;,e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if(&quot;object&quot;==typeof e&amp;&amp;&quot;number&quot;==typeof e.timestamp&amp;&amp;(new Date).valueOf()&lt;e.timestamp+604800&amp;&amp;&quot;object&quot;==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if(&quot;undefined&quot;!=typeof Worker&amp;&amp;&quot;undefined&quot;!=typeof OffscreenCanvas&amp;&amp;&quot;undefined&quot;!=typeof URL&amp;&amp;URL.createObjectURL&amp;&amp;&quot;undefined&quot;!=typeof Blob)try{var e=&quot;postMessage(&quot;+f.toString()+&quot;(&quot;+[JSON.stringify(s),u.toString(),p.toString()].join(&quot;,&quot;)+&quot;));&quot;,r=new Blob([e],{type:&quot;text/javascript&quot;}),a=new Worker(URL.createObjectURL(r),{name:&quot;wpTestEmojiSupports&quot;});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&amp;&amp;n.supports[t],&quot;flag&quot;!==t&amp;&amp;(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&amp;&amp;n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&amp;&amp;!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&amp;&amp;e.twemoji&amp;&amp;(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+"></script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="convertkit-broadcasts-css" type="text/css" media="all" consent-original-href-_="https://programonaut.b-cdn.net/wp-content/plugins/convertkit/resources/frontend/css/broadcasts.css?ver=2.2.8" consent-required="4822" consent-by="services" consent-id="4823"/>
+<link rel="stylesheet" id="convertkit-button-css" type="text/css" media="all" consent-original-href-_="https://programonaut.b-cdn.net/wp-content/plugins/convertkit/resources/frontend/css/button.css?ver=2.2.8" consent-required="4822" consent-by="services" consent-id="4823"/>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='mkaz-code-syntax-prism-css-css' href='https://programonaut.b-cdn.net/wp-content/plugins/code-syntax-block/assets/prism-a11y-dark.css?ver=1656441311' type='text/css' media='all' />
+<link rel='stylesheet' id='copy-style-css' href='https://programonaut.b-cdn.net/wp-content/plugins/simple-copy-code-main/copy.css?ver=0.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='addtoany-css' href='https://programonaut.b-cdn.net/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.16' type='text/css' media='all' />
+<link rel='stylesheet' id='programonaut-style-css' href='https://programonaut.b-cdn.net/wp-content/themes/wp-programonaut/style.css?ver=1693384586' type='text/css' media='all' />
+<link rel='stylesheet' id='programonaut-theme-style-css' href='https://programonaut.b-cdn.net/wp-content/themes/wp-programonaut/css/theme.css?ver=1693384586' type='text/css' media='all' />
+<script type='text/javascript' defer='defer' src='https://programonaut.b-cdn.net/wp-includes/js/jquery/jquery.min.js?ver=3.7.0' id='jquery-core-js'></script>
+<script type='text/javascript' defer='defer' src='https://programonaut.b-cdn.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1' id='jquery-migrate-js'></script>
+<script id="addtoany-core-js-before" type="text/javascript">
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+a2a_config.callbacks.push({ready:function(){document.querySelectorAll(".a2a_s_undefined").forEach(function(emptyIcon){emptyIcon.parentElement.style.display="none";})}});
+</script>
+<script type='text/javascript' async defer='defer' src='https://static.addtoany.com/menu/page.js' id='addtoany-core-js'></script>
+<script type='text/javascript' async defer='defer' src='https://programonaut.b-cdn.net/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.1' id='addtoany-jquery-js'></script>
+<link rel="https://api.w.org/" href="https://www.programonaut.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.programonaut.com/wp-json/wp/v2/posts/5841" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.programonaut.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.3.1" />
+<link rel='shortlink' href='https://www.programonaut.com/?p=5841' />
+<link rel="alternate" type="application/json+oembed" href="https://www.programonaut.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.programonaut.com%2Fhow-to-host-a-mail-server-with-docker-for-free-step-by-step%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.programonaut.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.programonaut.com%2Fhow-to-host-a-mail-server-with-docker-for-free-step-by-step%2F&amp;format=xml" />
+<script async src="https://umami.programonaut.com/script.js" data-website-id="effec1bb-945b-431a-a91e-5c487717cd67"></script>
+<script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script><style type="text/css">
+.no-js .native-lazyload-js-fallback {
+	display: none;
+}
+</style>
+		<style>[consent-id]:not(.rcb-content-blocker):not([consent-transaction-complete]):not([consent-visual-use-parent^="children:"]):not([consent-confirm]){opacity:0!important;}</style><link rel="icon" href="https://programonaut.b-cdn.net/wp-content/uploads/2021/07/cropped-programonaut-sw-512-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://programonaut.b-cdn.net/wp-content/uploads/2021/07/cropped-programonaut-sw-512-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://programonaut.b-cdn.net/wp-content/uploads/2021/07/cropped-programonaut-sw-512-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://programonaut.b-cdn.net/wp-content/uploads/2021/07/cropped-programonaut-sw-512-1-270x270.png" />
+</head>
+
+<body>
+
+    <nav class="sticky top-0 h-16 bg-white z-50 drop-shadow">
+        <div class="absolute left-2 top-2 md:left-16 h-12 aspect-square">
+                                        <a href="https://www.programonaut.com/">
+                    <img id="logo" src="https://programonaut.b-cdn.net/wp-content/uploads/2022/07/programonaut-logo-180x180.png" alt="home" class="h-full" />
+                </a>
+                    </div>
+
+        <div class="bg-white flex flex-col items-end p-2 md:pr-16">
+            <div id="nav-toggle" class="h-12 aspect-square object-fill p-1 md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </div>
+            <ul id="nav-menu" class="hidden"><li id="menu-item-16" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-16"><a href="https://www.programonaut.com/">Home</a></li>
+<li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-18"><a href="https://www.programonaut.com/blog/">Blog</a></li>
+<li id="menu-item-5298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5298"><a href="https://www.programonaut.com/projects/">Projects</a></li>
+<li id="menu-item-5550" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5550"><a href="https://www.programonaut.com/about/">About</a></li>
+</ul>        </div>
+
+
+        <!--  -->
+    </nav>
+
+
+
+    <!-- Programonaut - Maximilian Kürschner<div id="nav" class="right-header">
+<a href="https://www.programonaut.com/" title="Home">Home</a><a href="https://www.programonaut.com/blog/" title="Blog">Blog</a><a href="https://www.programonaut.com/projects/" title="Projects">Projects</a><a href="https://www.programonaut.com/about/" title="About">About</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+</a>
+    -->
+<article class="w-5/6 md:w-2/3 lg:w-7/12 xl:w-1/2 mx-auto my-8 md:my-16">
+    <div class="mb-4">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">
+            How To Host A Mail Server With Docker For Free (Step-by-Step)        </h1>
+        <div class="space-x-2 flex items-center">
+            <span class="hidden sm:inline text-highlight font-bold">Docker</span>
+            <!-- <span class="hidden sm:inline mr-4">2 min read</span> -->
+            <div class="h-1.5 w-1.5 rounded-full bg-black bg-opacity-[0.85] inline-block"></div>
+            <!-- TODO: Check how it looks with more then 0 comments -->
+            <a href="#discussion"><span>2 Comments</span></a>
+
+            <div class="h-1.5 w-1.5 rounded-full bg-black bg-opacity-[0.85] inline-block"></div>
+
+            <span>Published: 12.02.2023</span>
+        </div>
+    </div>
+    <div id="post-content">
+        <div class="addtoany_share_save_container addtoany_content addtoany_content_top"><div class="a2a_kit a2a_kit_size_32 addtoany_list" data-a2a-url="https://www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/" data-a2a-title="How To Host A Mail Server With Docker For Free (Step-by-Step)"><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fwww.programonaut.com%2Fhow-to-host-a-mail-server-with-docker-for-free-step-by-step%2F&amp;linkname=How%20To%20Host%20A%20Mail%20Server%20With%20Docker%20For%20Free%20%28Step-by-Step%29" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_threads" href="https://www.addtoany.com/add_to/threads?linkurl=https%3A%2F%2Fwww.programonaut.com%2Fhow-to-host-a-mail-server-with-docker-for-free-step-by-step%2F&amp;linkname=How%20To%20Host%20A%20Mail%20Server%20With%20Docker%20For%20Free%20%28Step-by-Step%29" title="Threads" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_reddit" href="https://www.addtoany.com/add_to/reddit?linkurl=https%3A%2F%2Fwww.programonaut.com%2Fhow-to-host-a-mail-server-with-docker-for-free-step-by-step%2F&amp;linkname=How%20To%20Host%20A%20Mail%20Server%20With%20Docker%20For%20Free%20%28Step-by-Step%29" title="Reddit" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_whatsapp" href="https://www.addtoany.com/add_to/whatsapp?linkurl=https%3A%2F%2Fwww.programonaut.com%2Fhow-to-host-a-mail-server-with-docker-for-free-step-by-step%2F&amp;linkname=How%20To%20Host%20A%20Mail%20Server%20With%20Docker%20For%20Free%20%28Step-by-Step%29" title="WhatsApp" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fwww.programonaut.com%2Fhow-to-host-a-mail-server-with-docker-for-free-step-by-step%2F&amp;linkname=How%20To%20Host%20A%20Mail%20Server%20With%20Docker%20For%20Free%20%28Step-by-Step%29" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_email" href="https://www.addtoany.com/add_to/email?linkurl=https%3A%2F%2Fwww.programonaut.com%2Fhow-to-host-a-mail-server-with-docker-for-free-step-by-step%2F&amp;linkname=How%20To%20Host%20A%20Mail%20Server%20With%20Docker%20For%20Free%20%28Step-by-Step%29" title="Email" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div></div>
+<p>Are you looking for an easy and cost-effective way to host a mail server? With Docker, you can now host a mail server for free in a few simple steps. In this guide, we will cover what a mail server is, what you need one for, and how you can use Docker to host your own mail server. We will also discuss testing the server with Pocketbase. So if you want to know how to host a mail server with Docker for free, keep reading!</p><div id="bottom-left-ea" data-ea-publisher="programonautcom" data-ea-type="image" data-ea-style="stickybox" class="horizontal raised" style="right: 0px; left: 20px; width: max-content;"></div>
+<div id="text-ea" data-ea-publisher="programonautcom" data-ea-type="text"></div>
+
+
+
+<ul>
+<li><a href="#what-is-a-mail-server">What is a mail server, and what do I need it for?</a></li>
+
+
+
+<li><a href="#host-mail-server">How to host a mail server using docker</a></li>
+
+
+
+<li><a href="#test-mail-server">Testing the mail server with Pocketbase</a></li>
+
+
+
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="what-is-a-mail-server">What is a mail server, and what do I need it for?</h2>
+
+
+
+<p>A mail server is responsible for sending, receiving, and storing email messages. It is a critical component of any online communication system, allowing users to communicate and stay in touch with each other. Having a mail server allows you to send and receive emails, as well as store messages for future reference.</p>
+
+
+
+<p>It can be used for different applications, like Pocketbase. Here, you can send emails to your users, for example, when they need to verify their accounts.</p>
+
+
+
+<h2 class="wp-block-heading" id="host-mail-server">How to host a mail server using docker?</h2>
+
+
+
+<p>In this section, we will learn how to host a mail server with docker step-by-step. My suggestion is to run this on your own Linux server, so the mail server is online 24/7. In the following section, I will symbolize values you have to enter like this: &lt;domain&gt;. In this case, you would need to enter your domain or subdomain, for example, programonaut.com</p><a href="https://discord.gg/nmDVVxCPbd" style="text-decoration: none;">
+<div style="
+		display: flex;
+		flex-direction: column;
+		padding: 16px;
+		text-align: center;
+		border: 1px solid black;
+		border-radius: 10px;
+		background-color: #535fee;
+		color: white;
+	" 
+>
+	<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" style="height: 48px; fill: white;"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+	<p>
+		Need help or want to share feedback? Join my discord community!
+	</p>
+</div>
+</a>
+
+
+
+<p><strong>Requirements:</strong></p>
+
+
+
+<ul>
+<li>Domain: You can use a domain from <a href="http://namecheap.pxf.io/VyzgQA">Namecheap</a> or another domain provider.</li>
+
+
+
+<li>Linux Server with Docker installed: You can find a good VPS on <a href="http://namecheap.pxf.io/AoxBAj">Namecheap</a>, for example, the Pulsar tier.</li>
+</ul>
+
+
+
+<p class="has-small-font-size">(Affiliate Links)</p>
+
+
+
+<p><strong>Steps:</strong></p>
+
+
+
+<ol>
+<li>Configure domain records (at the domain registrar): Hostname Record Value mail.</li>
+</ol>
+
+
+
+<figure class="wp-block-table"><table><thead><tr><th>Hostname</th><th>Record</th><th>Value</th></tr></thead><tbody><tr><td>mail.&lt;domain&gt;</td><td>A</td><td>&lt;ip-of-server&gt;</td></tr><tr><td>mail.&lt;domain&gt;</td><td>MX</td><td>&lt;prio&gt; mail.&lt;domain&gt;</td></tr></tbody></table></figure>
+
+
+
+<ol start="2">
+<li>Create a directory on your server called <code>mailserver</code>.</li>
+
+
+
+<li>Create a file <code>mailserver/mailserver.env</code> with the following content (you can find the default file <a href="https://github.com/docker-mailserver/docker-mailserver/blob/master/mailserver.env">here</a>):</li>
+</ol>
+
+
+<div class="copy-container"><button class="copy-button" onclick="copyCodeToClipboard(event)">Copy</button>
+<pre class="wp-block-code"><code class="">DMS_DEBUG=0
+LOG_LEVEL=info
+ONE_DIR=1
+ENABLE_UPDATE_CHECK=1
+UPDATE_CHECK_INTERVAL=1d
+PERMIT_DOCKER=none
+ENABLE_SRS=0
+ENABLE_OPENDKIM=1
+ENABLE_OPENDMARC=1
+ENABLE_CLAMAV=0
+ENABLE_RSPAMD=0
+ENABLE_AMAVIS=1
+AMAVIS_LOGLEVEL=0
+ENABLE_DNSBL=0
+ENABLE_FAIL2BAN=0
+FAIL2BAN_BLOCKTYPE=drop
+POSTSCREEN_ACTION=enforce
+SSL_TYPE=letsencrypt
+ENABLE_QUOTAS=1
+LOGROTATE_INTERVAL=weekly
+POSTFIX_INET_PROTOCOLS=all
+DOVECOT_INET_PROTOCOLS=all
+ENABLE_SPAMASSASSIN=0
+SPAMASSASSIN_SPAM_TO_INBOX=1
+ENABLE_SPAMASSASSIN_KAM=0
+MOVE_SPAM_TO_JUNK=1
+SA_TAG=2.0
+SA_TAG2=6.31
+SA_KILL=10.0
+SA_SPAM_SUBJECT=***SPAM*****
+ENABLE_FETCHMAIL=0
+FETCHMAIL_POLL=300
+DOVECOT_MAILBOX_FORMAT=maildir
+ENABLE_POSTGREY=0
+POSTGREY_DELAY=300
+POSTGREY_MAX_AGE=35
+POSTGREY_TEXT="Delayed by Postgrey"
+POSTGREY_AUTO_WHITELIST_CLIENTS=5
+ENABLE_SASLAUTHD=0
+SRS_SENDER_CLASSES=envelope_sender
+RELAY_PORT=25
+RELAY_PASSWORD=
+</code></pre>
+</div>
+
+
+<ol start="4">
+<li>Create <code>mailserver/docker-compose.yml</code> and add the following content:</li>
+</ol>
+
+
+<div class="copy-container"><button class="copy-button" onclick="copyCodeToClipboard(event)">Copy</button>
+<pre class="wp-block-code"><code lang="yaml" class="language-yaml">services:
+  mailserver:
+    image: docker.io/mailserver/docker-mailserver:latest
+    container_name: mailserver
+    hostname: mail
+    domainname: &lt;domain&gt;
+    env_file: mailserver.env
+    ports:
+      - "25:25"    # SMTP  (explicit TLS =&gt; STARTTLS)
+      - "143:143"  # IMAP4 (explicit TLS =&gt; STARTTLS)
+      - "465:465"  # ESMTP (implicit TLS)
+      - "587:587"  # ESMTP (explicit TLS =&gt; STARTTLS)
+      - "993:993"  # IMAP4 (implicit TLS)
+    volumes:
+      - ./data/dms/mail-data/:/var/mail/
+      - ./data/dms/mail-state/:/var/mail-state/
+      - ./data/dms/mail-logs/:/var/log/mail/
+      - ./data/dms/config/:/tmp/docker-mailserver/
+      - ./data/letsencrypt:/etc/letsencrypt
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    stop_grace_period: 1m
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: "ss --listening --tcp | grep -P 'LISTEN.+:smtp' || exit 1"
+      timeout: 3s
+      retries: 0
+
+	certbot:
+    image: certbot/certbot
+    container_name: certbot
+    ports:
+      - "80:80"
+    volumes: 
+      - ./data/letsencrypt:/etc/letsencrypt
+      - ./data/certbot/logs:/var/log/letsencrypt/
+    command: certonly --standalone --force-renewal --email &lt;mail&gt; -d mail.&lt;domain&gt; --agree-tos
+</code></pre>
+</div>
+
+
+<ol start="5">
+<li>Run <code>docker compose up -d</code> to initialize the mailserver and retrieve an SSL certificate. (To renew the certificate, you have to run <code>docker compose up -d cerbot</code>, you can automate that by running cron once a month.)</li>
+
+
+
+<li>Add a mail user: <code>docker exec -ti mailserver setup email add &lt;user@domain&gt;</code></li>
+
+
+
+<li>Add DKIM: <code>docker exec -ti mailserver setup config dkim</code></li>
+
+
+
+<li>Copy the content of the file&nbsp;<code>docker-data/dms/config/opendkim/keys/example.com/mail.txt</code> &nbsp;and add it to your DNS as a TXT record.</li>
+</ol>
+
+
+
+<figure class="wp-block-table is-style-regular"><table><thead><tr><th>Hostname</th><th>Record</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>mail.&lt;domain&gt;</td><td>TXT</td><td>&#8220;v=DKIM1; h=sha256; k=rsa; p=ABC…”</td><td>p might be in separate strings and has to be concatenated into one.</td></tr></tbody></table></figure>
+
+
+
+<ol start="9">
+<li>Steps 5-7 have to be repeated for new users.</li>
+</ol>
+
+
+
+<p>With that, you hosted your very own mailserver using Docker. I hope this guide was helpful, and if there is any question, feel free to ask in the chat or join my <a href="https://discord.gg/nmDVVxCPbd">Discord community</a> and ask me or the other members.</p><a href="https://pgnt.xyz/kofi" style="text-decoration: none;">
+<div style="
+		display: flex;
+		flex-direction: column;
+		padding: 16px;
+		text-align: center;
+		border: 1px solid black;
+		border-radius: 10px;
+		background-color: #4580f5;
+		color: white;
+	" 
+>
+	<img src="https://programonaut.b-cdn.net/wp-content/plugins/native-lazyload/assets/images/placeholder.svg" alt="KOFI Logo" style="height: 48px; width:48px; margin: auto;" loading="lazy" class="native-lazyload-js-fallback" data-src="https://storage.ko-fi.com/cdn/brandasset/kofi_s_logo_nolabel.png"/><noscript><img loading="lazy" src="https://storage.ko-fi.com/cdn/brandasset/kofi_s_logo_nolabel.png" alt="KOFI Logo" style="height: 48px; width:48px; margin: auto;" /></noscript>
+	<p>
+		If this guide is helpful to you and you like what I do, please support me with a coffee!
+	</p>
+</div>
+</a>
+
+
+
+<h2 class="wp-block-heading" id="test-mail-server">Testing the mail server with Pocketbase</h2>
+
+
+
+<p>Now we will use the mailserver we just created to configure Pocketbase to use it. To learn more about what pocketbase is, check this post <a href="https://www.programonaut.com/how-to-use-pocketbase-auth-for-a-login-screen-step-by-step/">here</a>. If you want to try to send a mail, follow these steps:</p>
+
+
+
+<ol>
+<li>Download the newest Pocketbase version&nbsp;<a href="https://github.com/pocketbase/pocketbase/releases">here</a>&nbsp;and unzip it.</li>
+
+
+
+<li>Run the executable using:&nbsp;<code>./pocketbase serve</code></li>
+
+
+
+<li>Open the Pocketchat Admin UI and go to “Settings” &gt; “Mail Settings”</li>
+
+
+
+<li>Enter the data as follows and then send a test mail:<br><img decoding="async" fetchpriority="high" width="1900" height="762" class="wp-image-5842 native-lazyload-js-fallback" style="width: 600px;" src="https://programonaut.b-cdn.net/wp-content/plugins/native-lazyload/assets/images/placeholder.svg" alt="host mail server for free using docker: pocketbase configuration" loading="lazy" data-src="https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings.jpg" data-srcset="https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings.jpg 1900w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-300x120.jpg 300w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-1024x411.jpg 1024w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-320x128.jpg 320w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-768x308.jpg 768w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-1536x616.jpg 1536w" data-sizes="(max-width: 1900px) 100vw, 1900px"/><noscript><img loading="lazy" decoding="async" fetchpriority="high" width="1900" height="762" class="wp-image-5842" style="width: 600px;" src="https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings.jpg" alt="host mail server for free using docker: pocketbase configuration" srcset="https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings.jpg 1900w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-300x120.jpg 300w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-1024x411.jpg 1024w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-320x128.jpg 320w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-768x308.jpg 768w, https://programonaut.b-cdn.net/wp-content/uploads/2023/02/host-mail-server-with-docker-pocketbase-settings-1536x616.jpg 1536w" sizes="(max-width: 1900px) 100vw, 1900px" /></noscript></li>
+</ol>
+
+
+
+<p>Now you can check your inbox and hopefully see an incoming email!</p>
+
+
+
+<h2 class="wp-block-heading" id="conclusion">Conclusion</h2>
+
+
+
+<p>Now you know how to host a mail server with Docker for free and have tested it with Pocketbase. In this guide, we have covered what a mail server is, what you need one for, and how you can use Docker to host your own mail server. We also discussed testing the server with Pocketbase.</p>
+
+
+
+<p>By following the steps outlined in this guide, you should now be able to host your own mail server with Docker for free. If you have any questions or need help, you can join the <a href="https://discord.gg/nmDVVxCPbd">Discord community</a>.</p>
+
+
+
+<p>Don’t forget to subscribe to my monthly newsletter to stay up-to-date on all my blog posts and updates. Sign up now and never miss a post!</p>
+
+
+<script data-uid="da33790d84" async consent-original-src-_="https://successful-originator-7814.ck.page/da33790d84/index.js" consent-required="4822" consent-by="services" consent-id="4823" consent-original-type-_="application/javascript" type="application/consent"></script>
+    </div>
+    <div id="discussion" class="scroll-mt-16">
+    <h2 class="font-bold text-2xl md:text-3xl mt-6 mb-1">
+        Discussion (2)
+    </h2>
+
+    <ul>
+           <li class="mt-4">
+    <div class="flex space-x-4">
+        <img class="w-16 h-16 rounded-full border border-black" consent-original-src-_="https://secure.gravatar.com/avatar/94245921419011594f36fca119cf1475?s=96&amp;d=mm&amp;r=g" consent-required="5591" consent-by="services" consent-id="5592"/>
+        <div class="comment">
+            <span class="text-lg font-bold">Nico</span>
+            <p class="text-lg break-words flex-0 break-all">Immer wenn ich docker-compose up -d ausführe kommt so ein Fehler 
+
+docker compose up -d
+parsing /opt/mx/docker-compose.yml: yaml: line 28: found a tab character that violates
+
+mfg
+nico</p>
+            <a rel='nofollow' class='comment-reply-link' href='#comment-19532' data-commentid="19532" data-postid="5841" data-belowelement="comment-19532" data-respondelement="respond" data-replyto="Reply to Nico" aria-label='Reply to Nico'>Reply</a>        </div>
+    </div>
+<ul class="children">
+   <li class="mt-4">
+    <div class="flex space-x-4">
+        <img class="w-16 h-16 rounded-full border border-black" consent-original-src-_="https://secure.gravatar.com/avatar/582b01d1b662f51e233ef8d2e7b60018?s=96&amp;d=mm&amp;r=g" consent-required="5591" consent-by="services" consent-id="5592"/>
+        <div class="comment">
+            <span class="text-lg font-bold">Programonaut</span>
+            <p class="text-lg break-words flex-0 break-all">Hallo,
+
+ersetze die Tabs in Zeile 28 durch Leerzeichen, dann sollte es funktionieren.</p>
+            <a rel='nofollow' class='comment-reply-link' href='#comment-19551' data-commentid="19551" data-postid="5841" data-belowelement="comment-19551" data-respondelement="respond" data-replyto="Reply to Programonaut" aria-label='Reply to Programonaut'>Reply</a>        </div>
+    </div>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    </ul>
+</div>
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Add Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://www.programonaut.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p><p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea autocomplete="new-password"  id="bc958721f6"  name="bc958721f6"   cols="45" rows="8" maxlength="65525" required="required"></textarea><textarea id="comment" aria-label="hp-comment" aria-hidden="true" name="comment" autocomplete="new-password" style="padding:0 !important;clip:rect(1px, 1px, 1px, 1px) !important;position:absolute !important;white-space:nowrap !important;height:1px !important;width:1px !important;overflow:hidden !important;" tabindex="-1"></textarea><script data-noptimize>document.getElementById("comment").setAttribute( "id", "a100033a9ddf8e402507c14bf181c5bd" );document.getElementById("bc958721f6").setAttribute( "id", "comment" );</script></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required="required" /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required="required" /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" autocomplete="url" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='5841' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+
+    <div id="post-navigation" class="mt-24 hidden sm:flex flex-row justify-between">
+        <div class="w-1/2">
+            <p class="text-left text-lg md:text-xl">PREVIOUS POST</p>
+            <a href="https://www.programonaut.com/pocketbase-vs-supabase-an-in-depth-comparison-auth-dx-etc/" rel="prev">Pocketbase vs. Supabase: An in-depth comparison (Auth, DX, etc.)</a>        </div>
+        <div class="w-1/2">
+            <p class="text-right text-lg md:text-xl">NEXT POST</p>
+            <a href="https://www.programonaut.com/how-to-link-to-a-github-pdf-without-downloading-it/" rel="next">How To Link To A GitHub PDF Without Downloading It?</a>        </div>
+    </div>
+
+    <!-- TODO: Think of how this could be made look good -->
+    <div class="hidden sm:block sm:hidden mt-16">
+        <h3 class="font-bold text-xl md:text-2xl mb-0.5">Related Posts</h3>
+        <div class="flex flex-row justify-evenly space-x-2">
+            <article class="blog-element">
+    <a href="https://www.programonaut.com/how-to-send-an-email-in-pocketbase-as-a-framework-step-by-step/" class="post">
+        <div class="thumbnail-container">
+            <img class="thumbnail" loading="lazy" src=https://www.programonaut.com/wp-content/uploads/2023/06/send-email-in-pocketbase-framework-thumbnail-300x169.png alt="" />
+        </div>
+    </a>
+</article><article class="blog-element">
+    <a href="https://www.programonaut.com/json-vs-yaml-a-comparison/" class="post">
+        <div class="thumbnail-container">
+            <img class="thumbnail" loading="lazy" src=https://www.programonaut.com/wp-content/uploads/2021/07/json-vs-yaml-300x169.png alt="" />
+        </div>
+    </a>
+</article><article class="blog-element">
+    <a href="https://www.programonaut.com/how-to-send-an-email-in-node-js-using-an-smtp-step-by-step/" class="post">
+        <div class="thumbnail-container">
+            <img class="thumbnail" loading="lazy" src=https://www.programonaut.com/wp-content/uploads/2023/05/send-email-in-node-js-thumbnail-300x169.png alt="" />
+        </div>
+    </a>
+</article><article class="blog-element">
+    <a href="https://www.programonaut.com/learn-how-to-build-a-multiplayer-tic-tac-toe-2/" class="post">
+        <div class="thumbnail-container">
+            <img class="thumbnail" loading="lazy" src=https://www.programonaut.com/wp-content/uploads/2021/07/tic-tac-toe-frontend-thumbnail-300x169.png alt="" />
+        </div>
+    </a>
+</article>        </div>
+    </div>
+</article>
+<!-- <footer>
+	<div><a href="#consent-change" id="change-cookies" data-success-message="" class="rcb-sc-link rcb-sc-link-change ">Change privacy settings</a></div>
+</footer> -->
+
+<footer class="px-4">
+	<div class="w-full h-0.5 bg-gray-500"></div>
+	<div class="flex flex-row justify-around text-gray-500 py-2 md:text-2xl md:py-4">
+		<a href="https://www.programonaut.com/imprint" class="no-underline hover:text-black hover:underline">IMPRINT</a>
+		<a href="https://www.programonaut.com/privacy-policy" class="no-underline hover:text-black hover:underline">PRIVACY</a>
+	</div>
+</footer>
+
+<div id="a65ab41d3-b2ac-4c9c-be6c-3eaa1ad83e3f" class="" data-bg="background-color: rgba(0, 0, 0, 0.380);" style="background-color: rgba(0, 0, 0, 0.380); -moz-backdrop-filter:blur(2px);-o-backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px); position:fixed;top:0;left:0;right:0;bottom:0;z-index:999999;pointer-events:all;display:none;filter:none;max-width:100vw;max-height:100vh;" ></div><script type="text/javascript">
+( function() {
+	var nativeLazyloadInitialize = function() {
+		var lazyElements, script;
+		if ( 'loading' in HTMLImageElement.prototype ) {
+			lazyElements = [].slice.call( document.querySelectorAll( '.native-lazyload-js-fallback' ) );
+			lazyElements.forEach( function( element ) {
+				if ( ! element.dataset.src ) {
+					return;
+				}
+				element.src = element.dataset.src;
+				delete element.dataset.src;
+				if ( element.dataset.srcset ) {
+					element.srcset = element.dataset.srcset;
+					delete element.dataset.srcset;
+				}
+				if ( element.dataset.sizes ) {
+					element.sizes = element.dataset.sizes;
+					delete element.dataset.sizes;
+				}
+				element.classList.remove( 'native-lazyload-js-fallback' );
+			} );
+		} else if ( ! document.querySelector( 'script#native-lazyload-fallback' ) ) {
+			script = document.createElement( 'script' );
+			script.id = 'native-lazyload-fallback';
+			script.type = 'text/javascript';
+			script.src = 'https://programonaut.b-cdn.net/wp-content/plugins/native-lazyload/assets/js/lazyload.js';
+			script.defer = true;
+			document.body.appendChild( script );
+		}
+	};
+	if ( document.readyState === 'complete' || document.readyState === 'interactive' ) {
+		nativeLazyloadInitialize();
+	} else {
+		window.addEventListener( 'DOMContentLoaded', nativeLazyloadInitialize );
+	}
+}() );
+</script>
+		<link rel='stylesheet' id='so-css-wp-programonaut-css' href='https://programonaut.b-cdn.net/wp-content/uploads/so-css/so-css-wp-programonaut.css?ver=1675285067' type='text/css' media='all' />
+<script type='text/javascript' defer='defer' src='https://programonaut.b-cdn.net/wp-includes/js/comment-reply.min.js?ver=6.3.1' id='comment-reply-js'></script>
+<script type='text/javascript' defer defer='defer' src='https://programonaut.b-cdn.net/wp-content/bd251c7430cbe8a499ab851ae92dbddc.js?ver=a60b028afbcee4e4bb81108ec7e534fc' ></script>
+<script type='text/javascript' id='convertkit-broadcasts-js-extra'>
+/* <![CDATA[ */
+var convertkit_broadcasts = {"ajax_url":"https:\/\/www.programonaut.com\/wp-admin\/admin-ajax.php","action":"convertkit_broadcasts_render","debug":""};
+/* ]]> */
+</script>
+<script defer="defer" id="convertkit-broadcasts-js" consent-original-src-_="https://programonaut.b-cdn.net/wp-content/plugins/convertkit/resources/frontend/js/broadcasts.js?ver=2.2.8" consent-required="4822" consent-by="services" consent-id="4823" consent-original-type-_="application/javascript" type="application/consent"></script>
+<script type='text/javascript' id='mkaz-code-syntax-prism-js-js-extra'>
+/* <![CDATA[ */
+var prism_settings = {"pluginUrl":"https:\/\/www.programonaut.com\/wp-content\/plugins\/code-syntax-block\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://programonaut.b-cdn.net/wp-content/plugins/code-syntax-block/assets/prism/prism.js?ver=1656441311' id='mkaz-code-syntax-prism-js-js'></script>
+<script consent-required="4822" consent-by="services" consent-id="4823" consent-original-type-_="application/javascript" type="application/consent" consent-original-id-_="convertkit-js-js-extra">
+/* <![CDATA[ */
+var convertkit = {"ajaxurl":"https:\/\/www.programonaut.com\/wp-admin\/admin-ajax.php","debug":"","nonce":"a20f21754f","subscriber_id":"","tag":"","post_id":"5841"};
+/* ]]> */
+</script>
+<script defer="defer" consent-original-src-_="https://programonaut.b-cdn.net/wp-content/plugins/convertkit/resources/frontend/js/convertkit.js?ver=2.2.8" consent-required="4822" consent-by="services" consent-id="4823" consent-original-type-_="application/javascript" type="application/consent" consent-original-id-_="convertkit-js-js"></script>
+<script type='text/javascript' defer='defer' src='https://programonaut.b-cdn.net/wp-content/plugins/simple-copy-code-main/copy.js?ver=0.1' id='copy-js'></script>
+<script type='text/javascript' defer='defer' src='https://programonaut.b-cdn.net/wp-content/themes/wp-programonaut/js/landing-page.js?ver=0.1' id='landing-js'></script>
+<script type='text/javascript' defer='defer' src='https://programonaut.b-cdn.net/wp-content/themes/wp-programonaut/js/posts.js?ver=0.1' id='posts-js'></script>
+</body>
+
+<!-- Mirrored from www.programonaut.com/how-to-host-a-mail-server-with-docker-for-free-step-by-step/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Aug 2023 06:36:26 GMT -->
+</html>

@@ -1,0 +1,1 @@
+mail._domainkey.mail.nikici.com mail.nikici.com:mail:/etc/opendkim/keys/mail.nikici.com/mail.private
